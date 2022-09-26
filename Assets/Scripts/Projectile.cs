@@ -35,9 +35,20 @@ public class Projectile : MonoBehaviour
         }
     }
 
-   /* private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
+        GameObject collisionObject = collision.gameObject;
+        DestructionFree destruction = collisionObject.GetComponent<DestructionFree>();
+
+        if (destruction == null)
+        {
+            Destroy(collisionObject);
+            Destroy(gameObject);
+        }
+        
+        /*
         GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
         damageIndicator.transform.position = collision.GetContact(0).point;
-    }   */
+        */
+    }   
 }

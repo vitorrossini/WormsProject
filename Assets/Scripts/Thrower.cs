@@ -7,11 +7,12 @@ public class Thrower : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
     [SerializeField] public TrajectoryLine trajectoryLine;
-    // [SerializeField] private PlayerTurn playerTurn;
+   
     private float speed = 200f;
     float timer = 0.0f;
     int seconds;
     bool maxTime = false;
+    private int timesShot = 0;
 
     private void Start()
     {
@@ -22,38 +23,42 @@ public class Thrower : MonoBehaviour
 
     private void Update()
     {
-        /* bool IsPlayerTurn = playerTurn.IsPlayerTurn();                  // ainda não criei o turn manager
-         trajectoryLine.enabled = IsPlayerTurn;
-         if (IsPlayerTurn)
-         {   */
         
 
-        Vector3 force = (transform.forward * speed * timer + transform.up * speed * timer);
 
-        if (Input.GetKey(KeyCode.Mouse0))
+
+            Vector3 force = (transform.forward * speed * timer + transform.up * speed * timer);
+
+            if (Input.GetKey(KeyCode.Mouse0))
             {
-            Timer();
-            trajectoryLine.enabled = true;
-            trajectoryLine.DrawCurvedTrajectory(force, shootingStartPosition.position);
-            
+                Timer();
+                trajectoryLine.enabled = true;
+                trajectoryLine.DrawCurvedTrajectory(force, shootingStartPosition.position);
+
             }
-           
+
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
-            // TurnManager.GetInstance().TriggerChangeTurn();
-            
+
+
                 GameObject newProjectile = Instantiate(projectilePrefab);
                 newProjectile.transform.position = shootingStartPosition.position;
                 newProjectile.GetComponent<Projectile>().Initialize(force);
-            trajectoryLine.DrawCurvedTrajectory(Vector3.zero, shootingStartPosition.position);
-            ResetTimer();
+                trajectoryLine.DrawCurvedTrajectory(Vector3.zero, shootingStartPosition.position);
+                ResetTimer();
+              /*  if (timesShot >= 2)
+                {
+                    timesShot = 0;
+                    TurnChanger.GetInstance().TriggerChangeTurn();
+                }*/
 
-            
+
             }
-
         
-         
-        }
+
+
+
+    }
 
 
     void Timer()
