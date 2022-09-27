@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Thrower : MonoBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
     [SerializeField] public TrajectoryLine trajectoryLine;
-   
+    [SerializeField] public PlayerTurn playerTurn;
+
+
+
+
     private float speed = 200f;
     float timer = 0.0f;
     int seconds;
@@ -17,13 +22,16 @@ public class Thrower : MonoBehaviour
     private void Start()
     {
         trajectoryLine.enabled = false;
-        
+
     }
 
 
     private void Update()
     {
-        
+        bool IsPlayerTurn = playerTurn.IsPlayerTurn(int index);
+        if (IsPlayerTurn(int index))
+        {
+
 
 
 
@@ -46,43 +54,45 @@ public class Thrower : MonoBehaviour
                 newProjectile.GetComponent<Projectile>().Initialize(force);
                 trajectoryLine.DrawCurvedTrajectory(Vector3.zero, shootingStartPosition.position);
                 ResetTimer();
-              /*  if (timesShot >= 2)
+                if (timesShot >= 2)
                 {
                     timesShot = 0;
-                    TurnChanger.GetInstance().TriggerChangeTurn();
-                }*/
+                    TurnManager.GetInstance().TriggerChangeTurn();
+                }
 
 
             }
-        
 
 
 
-    }
-
-
-    void Timer()
-    {
-
-        timer += Time.deltaTime;
-
-        if(timer > 2f)
-        {
-            ResetTimer();
+            //}
         }
 
+
+        void Timer()
+        {
+
+            timer += Time.deltaTime;
+
+            if (timer > 2f)
+            {
+                ResetTimer();
+            }
+
+        }
+
+        void ResetTimer()
+        {
+
+            timer = 0.0f;
+
+        }
+
+
+
+
+
+
     }
-
-    void ResetTimer()
-    {
-
-     timer = 0.0f;
-                // }
-    }
-
-    
-
-
-
-   
 }
+
