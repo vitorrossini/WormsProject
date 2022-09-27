@@ -13,6 +13,8 @@ public class PlayerTurn : MonoBehaviour
 
     public bool IsPlayerTurn()
     {
-       return TurnManager.GetInstance().IsPlayerTurn(int index);
+        
+            return TurnManager.GetInstance().IsItPlayerTurn(playerIndex);
+        
     }          
 }

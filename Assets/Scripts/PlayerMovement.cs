@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] PlayerTurn playerTurn;
     private Animator animator;
-    private float walkingSpeed = 10f;
+    private float walkingSpeed = 5f;
     private Rigidbody rigidbody;
     private float time = 0f;
 
@@ -22,8 +22,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool IsPlayerTurn = playerTurn.IsPlayerTurn();
-        if (IsPlayerTurn(int, playerIndex))
+        
+        if (playerTurn.IsPlayerTurn())
         {
             if (Input.GetAxis("Horizontal") != 0)
             {
@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
              */
             RaycastHit hit;
 
-            return Physics.SphereCast(transform.position, 0.05f, -transform.up, out hit, 1f); // creates a sphere to check if it hits something
+            return Physics.SphereCast(transform.position, 0.1f, -transform.up, out hit, 1f); // creates a sphere to check if it hits something
 
         }
 

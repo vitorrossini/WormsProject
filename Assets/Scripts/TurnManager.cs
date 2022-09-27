@@ -45,7 +45,7 @@ public class TurnManager : MonoBehaviour
         }
     }
 
-    private bool IsPlayerTurn(int index)
+    public bool IsItPlayerTurn(int index)
     {
         if(waitingForNextTurn)
         {

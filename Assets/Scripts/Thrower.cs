@@ -28,14 +28,14 @@ public class Thrower : MonoBehaviour
 
     private void Update()
     {
-        bool IsPlayerTurn = playerTurn.IsPlayerTurn(int index);
-        if (IsPlayerTurn(int index))
+       
+        if (playerTurn.IsPlayerTurn())
         {
 
 
-
-
             Vector3 force = (transform.forward * speed * timer + transform.up * speed * timer);
+
+           
 
             if (Input.GetKey(KeyCode.Mouse0))
             {
@@ -54,10 +54,13 @@ public class Thrower : MonoBehaviour
                 newProjectile.GetComponent<Projectile>().Initialize(force);
                 trajectoryLine.DrawCurvedTrajectory(Vector3.zero, shootingStartPosition.position);
                 ResetTimer();
+                timesShot++;
+                
                 if (timesShot >= 2)
                 {
-                    timesShot = 0;
                     TurnManager.GetInstance().TriggerChangeTurn();
+                    timesShot = 0;
+                    
                 }
 
 
