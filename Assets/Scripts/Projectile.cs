@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,11 +8,13 @@ public class Projectile : MonoBehaviour
     //[SerializeField] private float speed;
     [SerializeField] private Rigidbody projectileBody;
    // [SerializeField] private GameObject damageIndicatorPrefab;
+   public PlayerHealth playerhealth;
     private bool isActive;
 
     public void Initialize(Vector3 direction)
     {
         isActive = true;
+        
 
         // -------- This method is for projectiles that have a parabole. ----------
         // We add a force only once, not every frame
@@ -43,6 +46,11 @@ public class Projectile : MonoBehaviour
         if (destruction == null)
         {
             Destroy(collisionObject);
+
+        }
+        if (collisionObject.layer == LayerMask.GetMask("Player"))
+        {
+            collisionObject.GetComponent<PlayerHealth>().TakeDamage(20);
             Destroy(gameObject);
         }
         
