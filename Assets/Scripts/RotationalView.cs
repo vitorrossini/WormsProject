@@ -9,7 +9,6 @@ public class RotationalView : MonoBehaviour
     [SerializeField] private float speedV = 2.0f;
     [SerializeField] private Transform playerBody;
     [SerializeField] private float walkingSpeed = 2f;
-    [SerializeField] private int playerIndex;
     [SerializeField] private PlayerTurn playerTurn;
 
     private float yaw = 0.0f;
