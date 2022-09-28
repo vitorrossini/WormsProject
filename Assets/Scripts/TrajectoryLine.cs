@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrajectoryLine : MonoBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private int stepCount = 2;
+    [SerializeField] private int stepCount = 10;
     [SerializeField] private LineRenderer lineRenderer;
 
 
