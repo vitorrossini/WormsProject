@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     //[SerializeField] private float speed;
     [SerializeField] private Rigidbody projectileBody;
    // [SerializeField] private GameObject damageIndicatorPrefab;
+   private int regularDamage = 20;
    public PlayerHealth playerhealth;
     private bool isActive;
 
@@ -42,17 +43,14 @@ public class Projectile : MonoBehaviour
     {
         GameObject collisionObject = collision.gameObject;
         DestructionFree destruction = collisionObject.GetComponent<DestructionFree>();
-
+        collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(regularDamage);
         if (destruction == null)
         {
-            Destroy(collisionObject);
+          
+            //Destroy(collisionObject);
 
         }
-        if (collisionObject.layer == LayerMask.GetMask("Player"))
-        {
-            collisionObject.GetComponent<PlayerHealth>().TakeDamage(20);
-            Destroy(gameObject);
-        }
+       
         
         /*
         GameObject damageIndicator = Instantiate(damageIndicatorPrefab);

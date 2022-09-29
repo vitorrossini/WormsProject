@@ -7,7 +7,9 @@ using UnityEngine;
 
 public class CollisionTest : MonoBehaviour
 {
-    private Animator animator;
+    private LayerMask layerMask;
+    private PlayerHealth playerHealth;
+    private int instantDeath = 100;
 
     private void Start()
     {
@@ -16,19 +18,24 @@ public class CollisionTest : MonoBehaviour
         
     }
 
-   private void OnTriggerEnter(Collider other)
+   private void OnTriggerEnter(Collider other )
    {
+       GameObject otherObject = other.gameObject;
        
-       other.gameObject.GetComponent<Thrower>().enabled = false;
-      other.gameObject.GetComponent<PlayerMovement>().enabled = false;
-      other.gameObject.GetComponent<RotationalView>().enabled = false;
+       
+       if( otherObject.CompareTag("chicken"))
 
+       {
+           otherObject.GetComponent<PlayerHealth>().TakeDamage(instantDeath);
+           otherObject.GetComponent<Thrower>().enabled = false;
+           otherObject.GetComponent<PlayerMovement>().enabled = false;
+           otherObject.GetComponent<RotationalView>().enabled = false;
+           Debug.LogError("ded chinken");
+       }
 
-      if (other.TryGetComponent(out DestructionFree free))
-      {
-          //free.gameObject
-      }
    }
+   
+
 
    //trhoemrore = collisionObject.GetComponent<DestructionFree>();
 }
