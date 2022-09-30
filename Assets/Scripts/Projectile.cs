@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Rigidbody projectileBody;
    // [SerializeField] private GameObject damageIndicatorPrefab;
    private int regularDamage = 20;
+   private int floorDamage = 1;
    public PlayerHealth playerhealth;
     private bool isActive;
 
@@ -40,20 +41,28 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
+    { 
         GameObject collisionObject = collision.gameObject;
-        DestructionFree destruction = collisionObject.GetComponent<DestructionFree>();
-        collision.gameObject.GetComponent<PlayerHealth>()?.TakeDamage(regularDamage);
-        if (destruction == null)
-        {
-          
-            //Destroy(collisionObject);
 
-        }
+          if (collisionObject.CompareTag("chicken"))
+          {
+              DestructionFree destruction = collisionObject.GetComponent<DestructionFree>();
+              collisionObject.GetComponent<PlayerHealth>()?.TakeDamage(regularDamage);
+              Destroy(gameObject);
+          }
+          
+          else if (collisionObject.CompareTag("floor"))
+          {
+              DestructionFree destruction = collisionObject.GetComponent<DestructionFree>();
+              collisionObject.GetComponent<TileHealth>()?.TakeDamage(floorDamage);
+              Destroy(gameObject);
+          }
+
+          Destroy(gameObject);
        
         
         /*
-        GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
+        GameObject damageIndicator = Instantiate(damageIndicatorPrefab); // i dont remember what this is, but i will leave it here for further study
         damageIndicator.transform.position = collision.GetContact(0).point;
         */
     }   

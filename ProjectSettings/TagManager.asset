@@ -6,6 +6,7 @@ TagManager:
   tags:
   - chicken
   - Items
+  - floor
   layers:
   - Default
   - TransparentFX
