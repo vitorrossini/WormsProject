@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.B) && IsTouchingFloor())
             {
-                rigidbody.AddForce(transform.up * 200);
+                Jump();
                 animator.SetBool("Run", true);
             }
 
@@ -88,6 +88,12 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
+        }
+
+        void Jump()
+        {
+            rigidbody.AddForce(transform.up * 200);
+            
         }
 
 
