@@ -14,6 +14,7 @@ public class TurnManager : MonoBehaviour
     public int currentPlayerIndex;
     private bool waitingForNextTurn;
     private float turnDelay;
+    public int turnNum = 0;
 
     public static TurnManager GetInstance()
     {
@@ -38,7 +39,7 @@ public class TurnManager : MonoBehaviour
             turnDelay += Time.deltaTime;
             if(turnDelay>= timeBetweenTurns)
             {
-                turnDelay = 2;
+                turnDelay = 3;
                 waitingForNextTurn = false;
                 ChangeTurn();
             }
@@ -56,11 +57,14 @@ public class TurnManager : MonoBehaviour
 
     public void TriggerChangeTurn()
     {
+     
         waitingForNextTurn = true;
+        
     }
 
     public void ChangeTurn()
     {
+        turnNum++;
         if (currentPlayerIndex == 0)
         {
             currentPlayerIndex = 1;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    
+    private TurnManager turnManager;
     private static ItemManager instance;
-    [SerializeField] GameObject pickupPrefab;
+    [SerializeField] GameObject purpleEgg;
     private void Awake()
     {
         if (instance == null)
@@ -24,12 +24,22 @@ public class ItemManager : MonoBehaviour
     }
    
     private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+    {                                  
+        
+
+        if (turnManager.turnNum % 3 == 0)
         {
-            GameObject newPickup = Instantiate(pickupPrefab);  // spawn when it reaches x turns (ask turn manager)
-            newPickup.transform.position = new Vector3(Random.Range(0f,5f), 1f, Random.Range(0f, 5f));
+            GameObject newPickup = Instantiate(purpleEgg);  // spawn when it reaches x turns (ask turn manager)
+            newPickup.transform.position = new Vector3(Random.Range(-2f, 2f), 2f, Random.Range(-2f, 2f));
+            newPickup.transform.position = new Vector3(Random.Range(-2f, 2f), 2f, Random.Range(-2f, 2f));
+            newPickup.transform.position = new Vector3(Random.Range(-2f, 2f), 2f, Random.Range(-2f, 2f));
+            newPickup.transform.position = new Vector3(Random.Range(-2f, 2f), 2f, Random.Range(-2f, 2f));
+            newPickup.transform.position = new Vector3(Random.Range(-2f, 2f), 2f, Random.Range(-2f, 2f));
+
         }
+
     }
+
+
 
 }

@@ -5,10 +5,9 @@ using UnityEngine;
 public class RotationalView : MonoBehaviour
 {
     [SerializeField] private Camera characterCamera;
-    [SerializeField] private float speedH = 2.0f;
-    [SerializeField] private float speedV = 2.0f;
+    [SerializeField] public float speedH = 2.0f;
+    [SerializeField] public float speedV = 2.0f;
     [SerializeField] private Transform playerBody;
-    [SerializeField] private float walkingSpeed = 2f;
     [SerializeField] private PlayerTurn playerTurn;
 
     private float yaw = 0.0f;

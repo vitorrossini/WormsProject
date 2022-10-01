@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float walkingSpeed = 5f;
     private Rigidbody rigidbody;
-    private float time = 0f;
 
 
 

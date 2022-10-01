@@ -42,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
         
         return;
         
-        Debug.LogError("ded chinken");
+        
 
     }
 

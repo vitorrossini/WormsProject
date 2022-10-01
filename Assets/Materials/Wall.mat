@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: Wall
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
@@ -77,6 +77,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.5377358, g: 0.27593607, b: 0.09385012, a: 1}
+    - _Color: {r: 0.6292283, g: 0.06915272, b: 0.6981132, a: 0.8235294}
     - _EmissionColor: {r: 0.13457069, g: 0.07115523, b: 0.38679248, a: 1}
   m_BuildTextureStacks: []
