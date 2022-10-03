@@ -24,7 +24,7 @@ public class RotationalView : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerTurn.IsPlayerTurn())
+        if (playerTurn.IsPlayerTurn() && !PauseMenu.gameIsPaused)
         {
 
             {

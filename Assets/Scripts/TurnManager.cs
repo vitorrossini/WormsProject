@@ -7,14 +7,16 @@ public class TurnManager : MonoBehaviour
     [Header("Player Turn")]
     [SerializeField] private PlayerTurn playerOne;
     [SerializeField] private PlayerTurn playerTwo;
-    [SerializeField] private float timeBetweenTurns = 5f;
+    [SerializeField] private float timeBetweenTurns = 3f;
     [SerializeField] private Camera cam0;
     [SerializeField] private Camera cam1;
+    [SerializeField] private GameObject turnUI;
     private float turnDelay;
     public int turnNum = 1;
     public int currentPlayerIndex;
     private bool waitingForNextTurn;
     private PlayerHealth playerHealth;
+    
 
 
 
@@ -40,6 +42,7 @@ public class TurnManager : MonoBehaviour
             currentPlayerIndex = 0;
             playerOne.SetPlayerTurn(0);
             playerTwo.SetPlayerTurn(1);
+            turnUI.SetActive(false);
 
                    }
     }
@@ -48,7 +51,13 @@ public class TurnManager : MonoBehaviour
     {
         if (waitingForNextTurn)
         {
+            
             turnDelay += Time.deltaTime;
+            if (turnDelay >= 0.5f)
+            {
+                turnUI.SetActive(true);
+            }
+            
             if (turnDelay >= timeBetweenTurns)
             {
                 turnDelay = 0;
@@ -93,6 +102,7 @@ public class TurnManager : MonoBehaviour
         {
 
         waitingForNextTurn = true;
+        
         }
 
 
@@ -112,7 +122,7 @@ public class TurnManager : MonoBehaviour
                 cam0.gameObject.SetActive(true);
                 cam1.gameObject.SetActive(false);
             }
-
+        turnUI.SetActive(false);
         turnNum++;
         itemTime++;
     }

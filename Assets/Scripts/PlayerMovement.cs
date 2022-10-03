@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.B) && IsTouchingFloor())
+            if (Input.GetKeyDown(KeyCode.Space) && IsTouchingFloor())
             {
                 Jump();
                 animator.SetBool("Run", true);

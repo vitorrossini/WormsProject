@@ -21,6 +21,7 @@ public class Thrower : MonoBehaviour
     private void Start()
     {
         trajectoryLine.enabled = false;
+        
 
     }
 
@@ -28,7 +29,7 @@ public class Thrower : MonoBehaviour
     private void Update()
     {
        
-        if (playerTurn.IsPlayerTurn())
+        if (playerTurn.IsPlayerTurn() && !PauseMenu.gameIsPaused)
         {
 
 
@@ -36,7 +37,7 @@ public class Thrower : MonoBehaviour
 
            
 
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.F))
             {
                 Timer();
                 trajectoryLine.enabled = true;
@@ -44,7 +45,7 @@ public class Thrower : MonoBehaviour
 
             }
 
-            if (Input.GetKeyUp(KeyCode.Mouse0))
+            if (Input.GetKeyUp(KeyCode.F))
             {
 
 
