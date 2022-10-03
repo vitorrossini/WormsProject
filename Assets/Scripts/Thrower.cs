@@ -16,6 +16,7 @@ public class Thrower : MonoBehaviour
     private float speed = 200f;
     float timer = 0.0f;
     private int timesShot = 0;
+    
 
     private void Start()
     {
@@ -54,14 +55,15 @@ public class Thrower : MonoBehaviour
                 ResetTimer();
                 timesShot++;
                 
-                if (timesShot >= 2)
+                if (timesShot == 2)
                 {
-                    
-                    TurnManager.GetInstance().TriggerChangeTurn();
-                    timesShot = 0;
-                    
-                }
 
+                    TurnManager.GetInstance().TriggerChangeTurn();
+
+                        timesShot = 0;
+                    }
+
+                }
 
             }
 
@@ -81,6 +83,8 @@ public class Thrower : MonoBehaviour
                 ResetTimer();
             }
 
+
+
         }
 
         void ResetTimer()
@@ -90,11 +94,18 @@ public class Thrower : MonoBehaviour
 
         }
 
+       
+
+
+      
 
 
 
 
 
-    }
+
+
+
+    
 }
 

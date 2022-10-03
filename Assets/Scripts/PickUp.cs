@@ -7,8 +7,9 @@ public class PickUp : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if(CompareTag("Player"))
+        if(CompareTag("chicken"))
         {
+            
             Destroy(gameObject);
         }
     }

@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
+
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    [SerializeField] GameObject playerWin;
+   
+
     
 
     // Start is called before the first frame update
@@ -16,6 +19,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        playerWin.SetActive(false);
+
+        
+        
+    
     }
 
     // Update is called once per frame
@@ -24,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            
     }   }
 
     public void TakeDamage(int damage)
@@ -39,10 +48,10 @@ public class PlayerHealth : MonoBehaviour
         gameObject.GetComponent<Thrower>().enabled = false;
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         gameObject.GetComponent<RotationalView>().enabled = false;
-        
-        return;
-        
-        
+
+        playerWin.SetActive(true);
+                  
+
 
     }
 
