@@ -55,9 +55,14 @@ public class PlayerHealth : MonoBehaviour
 
     }
 
-   
-
- 
+    private void OnCollisionEnter(Collision item)
+    {
+        if (item.gameObject.CompareTag("Items"))
+        {
+            currentHealth += 20;
+            Destroy(item.gameObject);
+        }
+    }
 }
 
 

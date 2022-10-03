@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     public static bool gameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public GameObject rulesMenuUI;
 
     
 
@@ -47,6 +48,11 @@ public class PauseMenu : MonoBehaviour
     public void QuitButton()
     {
         Application.Quit();
+    }
+
+    public void Rules()
+    {
+        rulesMenuUI.SetActive(true);
     }
 
 }

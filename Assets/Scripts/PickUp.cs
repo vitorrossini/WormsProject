@@ -5,11 +5,20 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private PlayerHealth playerHealth;
+    [SerializeField]private GameObject item;
+   
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(CompareTag("chicken"))
+        
+    }
+
+    private void OnCollisionEnter(Collision item)
+    {
+        if(gameObject.CompareTag("chicken"))
         {
-            
+            item.gameObject.GetComponent<PlayerHealth>().currentHealth =+ 20;
             Destroy(gameObject);
         }
     }
