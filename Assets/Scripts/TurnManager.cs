@@ -43,8 +43,7 @@ public class TurnManager : MonoBehaviour
             playerOne.SetPlayerTurn(0);
             playerTwo.SetPlayerTurn(1);
             turnUI.SetActive(false);
-
-                   }
+        }
     }
 
     private void Update()
@@ -55,7 +54,7 @@ public class TurnManager : MonoBehaviour
             turnDelay += Time.deltaTime;
             if (turnDelay >= 0.5f)
             {
-                turnUI.SetActive(true);
+                turnUI.SetActive(true); // starts the next turn UI
             }
             
             if (turnDelay >= timeBetweenTurns)
@@ -80,9 +79,10 @@ public class TurnManager : MonoBehaviour
         private void ItemTime()                    // spawning the item
         {
            GameObject newPickup = Instantiate(spawnItem);
+           GameObject newPickup2 = Instantiate(spawnItem);
            newPickup.transform.position = spawnPosition.position;
 
-           newPickup.transform.position = spawnPosition2.position;
+           newPickup2.transform.position = spawnPosition2.position;
 
            itemTime = 0;
 
@@ -121,10 +121,11 @@ public class TurnManager : MonoBehaviour
                 currentPlayerIndex = 0;
                 cam0.gameObject.SetActive(true);
                 cam1.gameObject.SetActive(false);
-            }
-        turnUI.SetActive(false);
-        turnNum++;
-        itemTime++;
+            } 
+            
+            turnUI.SetActive(false);  // hides the next turn UI 
+            turnNum++;
+            itemTime++;
     }
 
 

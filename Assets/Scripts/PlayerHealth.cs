@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] public AudioClip pickupSound;
     [SerializeField] GameObject player;
     [SerializeField] GameObject otherPlayer;
+    
    
 
     
@@ -64,20 +65,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-
         player.SetActive(false);
-        TurnManager.GetInstance().ChangeTurn();
         Time.timeScale = 0f;
-               /*
-        gameObject.GetComponent<Animator>().enabled = false;
-        gameObject.GetComponent<Thrower>().enabled = false;
-        gameObject.GetComponent<PlayerMovement>().enabled = false;
-        gameObject.GetComponent<RotationalView>().enabled = false;
-                                                           */
-
         otherPlayerWins.SetActive(true);
-                  
-
+        
+        if (gameObject.GetComponent<PlayerTurn>().IsPlayerTurn()) // i wrote this cause i had a problem when the player died and his camera was disabled, i had no screen to render anymore.
+        {
+            TurnManager.GetInstance().ChangeTurn();
+        }
 
     }
 

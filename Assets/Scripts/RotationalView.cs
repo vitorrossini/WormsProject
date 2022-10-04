@@ -15,13 +15,13 @@ public class RotationalView : MonoBehaviour
 
     [SerializeField] private float pitchClamp = 90;
 
-    // Start is called before the first frame update
+ 
     void Start()
     {
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         if (playerTurn.IsPlayerTurn() && !PauseMenu.gameIsPaused)
@@ -32,8 +32,7 @@ public class RotationalView : MonoBehaviour
             }
         }
 
-
-         void ReadRotationInput()
+        void ReadRotationInput()
         {
             yaw += speedH * Input.GetAxis("Mouse X");
             pitch -= speedV * Input.GetAxis("Mouse Y");

@@ -56,13 +56,9 @@ public class PlayerMovement : MonoBehaviour
 
          bool IsTouchingFloor()
         {
-            /*
-             * Parameters: Center from where we shoot,radius of sphere, direction of sphere, hit parameter, distance of the sphere
-             * 
-             */
             RaycastHit hit;
 
-            return Physics.SphereCast(transform.position, 0.1f, -transform.up, out hit, 1f); // creates a sphere to check if it hits something
+            return Physics.SphereCast(transform.position, 0.1f, -transform.up, out hit, 1f); // creates a sphere to check if it hits something. Mine isn't working as i hoped to, but i couldn't figure out why
 
         }
 

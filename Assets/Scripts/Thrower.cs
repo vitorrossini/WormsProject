@@ -33,7 +33,7 @@ public class Thrower : MonoBehaviour
         {
 
 
-            Vector3 force = (transform.forward * speed * timer + transform.up * speed * timer);
+            Vector3 force = (transform.forward * speed * timer + transform.up * speed * timer); // took hours to realize that what i needed was acceleration
 
            
 
@@ -56,25 +56,24 @@ public class Thrower : MonoBehaviour
                 ResetTimer();
                 timesShot++;
                 
-                if (timesShot == 2)
+                if (timesShot == 2) // changes turn every 2 throws
                 {
 
                     TurnManager.GetInstance().TriggerChangeTurn();
 
                         timesShot = 0;
-                    }
-
                 }
-
             }
+
+        }
 
 
 
             
-        }
+    }
 
 
-        void Timer()
+        void Timer()  // this was the moment i realized i could create timers for things. Awesome moment for me
         {
 
             timer += Time.deltaTime;
@@ -94,19 +93,8 @@ public class Thrower : MonoBehaviour
             timer = 0.0f;
 
         }
-
-       
-
-
-      
-
-
-
-
-
-
-
-
+  
     
+  
 }
 
