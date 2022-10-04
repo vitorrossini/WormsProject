@@ -7,6 +7,8 @@ public class TileHealth : MonoBehaviour
 {
     public int maxHealth = 3;
     public int currentHealth;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip crack;
     
    
     // Start is called before the first frame update
@@ -38,6 +40,7 @@ public class TileHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        audioSource.PlayOneShot(crack);
     }
 
     

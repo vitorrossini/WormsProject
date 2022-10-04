@@ -5,16 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] PlayerTurn playerTurn;
+    [SerializeField] AudioSource jumpAudio;
+    [SerializeField] AudioClip jump;
     private Animator animator;
     private float walkingSpeed = 5f;
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = gameObject.GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 
@@ -71,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
             if (directionZ.magnitude > 0f)
             {
                 animator.SetBool("Run", true);
+                
+                
 
             }
 
@@ -84,14 +88,15 @@ public class PlayerMovement : MonoBehaviour
             if (directionX.magnitude > 0f)
             {
                 animator.SetBool("Run", true);
-
+                
             }
 
         }
 
         void Jump()
         {
-            rigidbody.AddForce(transform.up * 200);
+            rb.AddForce(transform.up * 200);
+            jumpAudio.PlayOneShot(jump);
             
         }
 

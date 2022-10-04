@@ -9,7 +9,14 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    [SerializeField] GameObject otherPlayerWins;
     [SerializeField] GameObject playerWin;
+    [SerializeField] AudioSource sfxPlayer;
+    [SerializeField] public AudioClip damageSfx;
+    [SerializeField] public AudioClip ded;
+    [SerializeField] public AudioClip pickupSound;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject otherPlayer;
    
 
     
@@ -19,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        playerWin.SetActive(false);
+        otherPlayerWins.SetActive(false);
 
         
         
@@ -32,37 +39,49 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
-            
-    }   }
+            sfxPlayer.PlayOneShot(ded);
+        }   
+
+        if(otherPlayer.GetComponent<PlayerHealth>().currentHealth <= 0)
+        {
+            playerWin.SetActive(true);
+        }   
+    }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        sfxPlayer.PlayOneShot(damageSfx);
+    }         
+
+    public void Heal(int healthItem)
+    {
+        currentHealth += healthItem;
+        healthBar.SetHealth(currentHealth);
+        sfxPlayer.PlayOneShot(pickupSound);
     }
 
     public void Die()
     {
-        
+
+        player.SetActive(false);
+        TurnManager.GetInstance().ChangeTurn();
+        Time.timeScale = 0f;
+               /*
         gameObject.GetComponent<Animator>().enabled = false;
         gameObject.GetComponent<Thrower>().enabled = false;
         gameObject.GetComponent<PlayerMovement>().enabled = false;
         gameObject.GetComponent<RotationalView>().enabled = false;
+                                                           */
 
-        playerWin.SetActive(true);
+        otherPlayerWins.SetActive(true);
                   
 
 
     }
 
-    private void OnCollisionEnter(Collision item)
-    {
-        if (item.gameObject.CompareTag("Items"))
-        {
-            currentHealth += 20;
-            Destroy(item.gameObject);
-        }
-    }
+    
 }
 
 

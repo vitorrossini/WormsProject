@@ -6,20 +6,21 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     private PlayerHealth playerHealth;
-    [SerializeField]private GameObject item;
    
 
     private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision item)
-    {
-        if(gameObject.CompareTag("chicken"))
+        if (other.CompareTag("chicken"))
         {
-            item.gameObject.GetComponent<PlayerHealth>().currentHealth =+ 20;
+            other.gameObject.GetComponent<PlayerHealth>().Heal(20);
             Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision player)
+    {
+       
+    }
+
+   
 }
