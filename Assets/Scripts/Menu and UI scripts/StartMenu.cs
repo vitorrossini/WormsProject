@@ -13,7 +13,7 @@ public class StartMenu : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(2);
        
-        SceneManager.LoadScene("Chicken");
+        SceneManager.LoadScene("chicken");
     }
 
         public void PlayGame()

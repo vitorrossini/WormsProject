@@ -8371,8 +8371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 531823725}
-  audioSource: {fileID: 0}
-  start: {fileID: 0}
+  audioSource: {fileID: 1816697304}
+  start: {fileID: 8300000, guid: e0c706093c8f1b147b55ba84892f6e83, type: 3}
 --- !u!1 &1373932032
 GameObject:
   m_ObjectHideFlags: 0

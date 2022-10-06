@@ -65,6 +65,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
+        Cursor.visible = true;
         player.SetActive(false);
         Time.timeScale = 0f;
         otherPlayerWins.SetActive(true);
