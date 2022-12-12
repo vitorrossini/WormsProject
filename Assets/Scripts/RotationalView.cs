@@ -8,7 +8,7 @@ public class RotationalView : MonoBehaviour
     [SerializeField] public float speedH = 2.0f;
     [SerializeField] public float speedV = 2.0f;
     [SerializeField] private Transform playerBody;
-    [SerializeField] private PlayerTurn playerTurn;
+   // [SerializeField] private PlayerTurn playerTurn;
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
@@ -24,7 +24,7 @@ public class RotationalView : MonoBehaviour
    
     void Update()
     {
-        if (playerTurn.IsPlayerTurn() && !PauseMenu.gameIsPaused)
+        if (/*playerTurn.IsPlayerTurn() &&*/ !PauseMenu.gameIsPaused)
         {
 
             {

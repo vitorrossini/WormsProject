@@ -16,6 +16,7 @@ public class Thrower : MonoBehaviour
     private float speed = 200f;
     float timer = 0.0f;
     private int timesShot = 0;
+    private bool isPressed;
     
 
     private void Start()
@@ -37,7 +38,7 @@ public class Thrower : MonoBehaviour
 
            
 
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetButton("Fire1"))
             {
                 Timer();
                 trajectoryLine.enabled = true;
@@ -45,7 +46,7 @@ public class Thrower : MonoBehaviour
 
             }
 
-            if (Input.GetKeyUp(KeyCode.F))
+            if (Input.GetButtonUp("Fire1"))
             {
 
 
@@ -93,6 +94,8 @@ public class Thrower : MonoBehaviour
             timer = 0.0f;
 
         }
+
+    
   
     
   

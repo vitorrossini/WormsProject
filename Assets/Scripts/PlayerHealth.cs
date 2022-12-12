@@ -70,10 +70,10 @@ public class PlayerHealth : MonoBehaviour
         Time.timeScale = 0f;
         otherPlayerWins.SetActive(true);
         
-        if (gameObject.GetComponent<PlayerTurn>().IsPlayerTurn()) // i wrote this cause i had a problem when the player died and his camera was disabled, i had no screen to render anymore.
+       /* if (gameObject.GetComponent<PlayerTurn>().IsPlayerTurn()) // i wrote this cause i had a problem when the player died and his camera was disabled, i had no screen to render anymore.
         {
             TurnManager.GetInstance().ChangeTurn();
-        }
+        }*/
 
     }
 

@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (playerTurn.IsPlayerTurn())
         {
             if (Input.GetAxis("Horizontal") != 0)
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
             }
 
-            if (Input.GetKeyDown(KeyCode.Space) && IsTouchingFloor())
+            if (Input.GetButtonDown("Jump") && IsTouchingFloor())
             {
                 Jump();
                 animator.SetBool("Run", true);
@@ -51,10 +51,10 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-            //  }
+
         }
 
-         bool IsTouchingFloor()
+        bool IsTouchingFloor()
         {
             RaycastHit hit;
 
@@ -69,8 +69,8 @@ public class PlayerMovement : MonoBehaviour
             if (directionZ.magnitude > 0f)
             {
                 animator.SetBool("Run", true);
-                
-                
+
+
 
             }
 
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
             if (directionX.magnitude > 0f)
             {
                 animator.SetBool("Run", true);
-                
+
             }
 
         }
@@ -93,12 +93,12 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * 200);
             jumpAudio.PlayOneShot(jump);
-            
+
         }
 
 
 
-
-
     }
+
+    
 }
