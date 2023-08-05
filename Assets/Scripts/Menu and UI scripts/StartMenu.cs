@@ -8,6 +8,7 @@ public class StartMenu : MonoBehaviour
     public Animator transition;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip start;
+    [SerializeField] GameObject rules;
     private IEnumerator WaitForSceneLoad()
     {
         transition.SetTrigger("Start");
@@ -21,10 +22,14 @@ public class StartMenu : MonoBehaviour
         audioSource.PlayOneShot(start);
         StartCoroutine(WaitForSceneLoad());
         Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
         Object.DontDestroyOnLoad(start);
     }
 
-    
+        public void Rules()
+        {
+            rules.SetActive(true);
+        }
 
 
     public void QuitButton()

@@ -69,6 +69,7 @@ public class PlayerHealth : MonoBehaviour
         player.SetActive(false);
         Time.timeScale = 0f;
         otherPlayerWins.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
         
        /* if (gameObject.GetComponent<PlayerTurn>().IsPlayerTurn()) // i wrote this cause i had a problem when the player died and his camera was disabled, i had no screen to render anymore.
         {
